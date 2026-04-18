@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
+const port = process.env.PORT ||8000;
 
 // MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -74,6 +75,6 @@ app.post("/chat", async (req, res) => {
   res.json({ reply });
 });
 
-app.listen(8000, () => {
+app.listen(port, () => {
   console.log("Server running on http://localhost:8000");
 });
